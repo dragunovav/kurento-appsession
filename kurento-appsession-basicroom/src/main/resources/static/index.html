@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="styleSheet" href="style.css" type="text/css" media="screen">
+
+<script src="webjars/adapter.js/0.2.9/adapter.js"></script>
+
+<script src="./js/kurento-utils.js"></script>
+<script src="./js/kurento-jsonrpc.js"></script>
+
+<script src="webjars/system.js/0.19.17/dist/system.js"></script>
+<script src="./js/code.js"></script>
+
+</head>
+<body>
+
+  <script>
+    System.import('Main').then(function(m){ Main = m; }, console.error.bind(console));
+  </script>
+
+	<div id="container">
+		<div id="wrapper">
+			
+			<div id="join" class="animate join">
+				<h1>Join a Room</h1>
+				<form onsubmit="Main.joinRoom(); return false;" accept-charset="UTF-8">
+					<p>
+						<input type="text" name="name" value="" id="name"
+							placeholder="Username" required>
+					</p>
+					<p>
+						<input type="text" name="room" value="" id="roomName"
+							placeholder="Room" required>
+					</p>
+					<p class="submit">
+						<input type="submit" name="commit" value="Join!">
+					</p>
+				</form>
+			</div>
+			
+			<div id="room" style="display: none;">
+				<h2 id="room-header"></h2>
+				<div id="participants"></div>
+				<input type="button" id="button-leave" onmouseup="Main.leaveRoom();"
+					value="Leave room">
+			</div>
+		</div>
+	</div>
+</body>
+</html>

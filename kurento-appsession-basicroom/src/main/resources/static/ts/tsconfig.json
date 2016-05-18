@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "mapRoot": "",
+    "module": "system",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "outFile": "../js/code.js",
+    "rootDir": ".",
+    "sourceMap": true,
+    "sourceRoot": "/",
+    "target": "es5"
+  },
+  "compileOnSave": true
+}
