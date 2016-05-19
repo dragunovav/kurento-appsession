@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 
-public abstract class AppSessionManager<S extends AppSession<P>, P extends Participant, R extends RemoteParticipant> {
+public abstract class AppSessionManager<S extends AppSession<P>, P extends Participant<R>, R extends RemoteParticipant> {
 
   private final Logger log = LoggerFactory.getLogger(AppSessionManager.class);
 

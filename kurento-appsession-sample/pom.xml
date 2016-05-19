@@ -4,12 +4,11 @@
 
 	<parent>
 		<groupId>org.kurento</groupId>
-		<artifactId>kurento-parent-pom</artifactId>
-		<version>6.4.1-SNAPSHOT</version>
+		<artifactId>kurento-appsession-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>kurento-appsession-sample</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Kurento AppSession Framework Sample</name>

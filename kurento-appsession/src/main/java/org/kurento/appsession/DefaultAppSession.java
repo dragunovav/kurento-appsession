@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentMap;
 
 import org.kurento.appsession.rmi.RemoteParticipant;
 
-public class DefaultAppSession<P extends Participant, R extends RemoteParticipant>
+public class DefaultAppSession<P extends Participant<R>, R extends RemoteParticipant>
     implements AppSession<P> {
 
   private String id;
