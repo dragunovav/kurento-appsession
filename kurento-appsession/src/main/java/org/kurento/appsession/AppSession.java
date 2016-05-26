@@ -3,7 +3,7 @@ package org.kurento.appsession;
 import java.util.Collection;
 import java.util.Set;
 
-public interface AppSession<P extends Participant<?>> {
+public interface AppSession<P extends Participant<?, ?>> {
 
   public String getId();
 

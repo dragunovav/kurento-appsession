@@ -43,7 +43,8 @@ public class RmiAppSessionManagerTest {
     public void req();
   }
 
-  public static class TestParticipant extends DefaultParticipant<TestRemoteParticipant> {
+  public static class TestParticipant
+      extends DefaultParticipant<TestAppSession, TestRemoteParticipant> {
 
   }
 

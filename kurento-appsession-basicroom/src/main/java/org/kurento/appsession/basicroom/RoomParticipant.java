@@ -27,7 +27,7 @@ import org.kurento.client.WebRtcEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RoomParticipant extends DefaultParticipant<RoomRemoteParticipant> {
+public class RoomParticipant extends DefaultParticipant<Room, RoomRemoteParticipant> {
 
   private static final Logger log = LoggerFactory.getLogger(RoomParticipant.class);
 
@@ -50,15 +50,11 @@ public class RoomParticipant extends DefaultParticipant<RoomRemoteParticipant> {
     return incomingEP;
   }
 
-  public Room getRoom() {
-    return (Room) getAppSession();
-  }
-
   @JsonRpcMethod
   public String negotiateMediaFor(String participantId, String sdpOffer) throws IOException {
 
     log.info("PARTICIPANT {}: connecting with {} in room {}", getId(), participantId,
-        getRoom().getId());
+        getAppSession().getId());
 
     WebRtcEndpoint mediaEP;
 
@@ -84,7 +80,7 @@ public class RoomParticipant extends DefaultParticipant<RoomRemoteParticipant> {
     WebRtcEndpoint outgoingEP = new WebRtcEndpoint.Builder(pipeline).build();
     outgoingEPs.put(participantId, outgoingEP);
 
-    WebRtcEndpoint participantIncomingEP = getRoom().getParticipant(participantId).getIncomingEP();
+    WebRtcEndpoint participantIncomingEP = getAppSession().getParticipant(participantId).getIncomingEP();
 
     participantIncomingEP.connect(outgoingEP);
 

@@ -3,13 +3,13 @@ package org.kurento.appsession;
 import org.kurento.appsession.rmi.RemoteParticipant;
 import org.kurento.jsonrpc.Session;
 
-public interface Participant<R extends RemoteParticipant> {
+public interface Participant<A extends AppSession<?>, R extends RemoteParticipant> {
 
   String getId();
 
-  AppSession<?> getAppSession();
+  A getAppSession();
 
-  void setAppSession(AppSession<?> appSession);
+  void setAppSession(A appSession);
 
   Session getSession();
 

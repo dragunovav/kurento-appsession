@@ -7,12 +7,13 @@ import org.kurento.jsonrpc.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DefaultParticipant<R extends RemoteParticipant> implements Participant<R> {
+public class DefaultParticipant<A extends AppSession<?>, R extends RemoteParticipant>
+    implements Participant<A, R> {
 
   private static final Logger log = LoggerFactory.getLogger(DefaultParticipant.class);
 
   private String id;
-  protected AppSession<?> appSession;
+  protected A appSession;
   protected Session session;
   private R remote;
 
@@ -30,12 +31,12 @@ public class DefaultParticipant<R extends RemoteParticipant> implements Particip
   }
 
   @Override
-  public AppSession<?> getAppSession() {
+  public A getAppSession() {
     return appSession;
   }
 
   @Override
-  public void setAppSession(AppSession<?> appSession) {
+  public void setAppSession(A appSession) {
     this.appSession = appSession;
   }
 

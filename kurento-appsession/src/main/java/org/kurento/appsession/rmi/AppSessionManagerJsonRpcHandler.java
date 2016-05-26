@@ -35,14 +35,14 @@ public class AppSessionManagerJsonRpcHandler extends DefaultJsonRpcHandler<JsonO
   private Map<String, Method> participantMethods;
 
   private Class<? extends AppSession<?>> appSessionClass;
-  private Class<? extends Participant<?>> participantClass;
+  private Class<? extends Participant<?, ?>> participantClass;
   private Class<? extends RemoteParticipant> remoteParticipantClass;
 
   private static JsonRpcAndJavaMethodManager methodManager = new JsonRpcAndJavaMethodManager();
 
   @SuppressWarnings("unchecked")
-  public <S extends AppSession<P>, P extends Participant<R>, R extends RemoteParticipant> AppSessionManagerJsonRpcHandler(
-      AppSessionManager<S, P, R> appSessionManager) {
+  public <A extends AppSession<P>, P extends Participant<A, R>, R extends RemoteParticipant> AppSessionManagerJsonRpcHandler(
+      AppSessionManager<A, P, R> appSessionManager) {
 
     this.appSessionManager = appSessionManager;
     this.appSessionManagerMethods = loadJsonRpcMethods(this.appSessionManager.getClass());
@@ -50,10 +50,10 @@ public class AppSessionManagerJsonRpcHandler extends DefaultJsonRpcHandler<JsonO
     Class<?>[] typeParams = getTypeParams(appSessionManager.getClass());
 
     this.appSessionClass = (Class<? extends AppSession<?>>) typeParams[0];
-    this.participantClass = (Class<? extends Participant<?>>) typeParams[1];
+    this.participantClass = (Class<? extends Participant<?, ?>>) typeParams[1];
     this.remoteParticipantClass = (Class<? extends RemoteParticipant>) typeParams[2];
 
-    appSessionManager.setAppSessionClass((Class<S>) appSessionClass);
+    appSessionManager.setAppSessionClass((Class<A>) appSessionClass);
 
     this.appSessionMethods = loadJsonRpcMethods(appSessionClass);
 
@@ -108,7 +108,7 @@ public class AppSessionManagerJsonRpcHandler extends DefaultJsonRpcHandler<JsonO
 
           if (m != null) {
 
-            Participant participant = clientManager.getParticipant();
+            Participant<?,?> participant = clientManager.getParticipant();
 
             methodManager.executeMethod(clientManager, participant, m, transaction, request);
 
