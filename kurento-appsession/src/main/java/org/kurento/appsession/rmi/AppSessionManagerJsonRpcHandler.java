@@ -108,7 +108,7 @@ public class AppSessionManagerJsonRpcHandler extends DefaultJsonRpcHandler<JsonO
 
           if (m != null) {
 
-            Participant<?,?> participant = clientManager.getParticipant();
+            Participant<?, ?> participant = clientManager.getParticipant();
 
             methodManager.executeMethod(clientManager, participant, m, transaction, request);
 
@@ -182,12 +182,7 @@ public class AppSessionManagerJsonRpcHandler extends DefaultJsonRpcHandler<JsonO
     }
   }
 
-  // @SuppressWarnings({ "unchecked", "rawtypes" })
-  // private void addParticipantToAppSession(AppSession<?> appSession, Participant p) {
-  // ((AppSession) appSession).addParticipant(p);
-  // }
-
-  private SessionAppSessionManager getSessionAppSessionManager(Session session) {
+  protected SessionAppSessionManager getSessionAppSessionManager(Session session) {
     return SessionAppSessionManager.getOrCreateFromSession(session, remoteParticipantClass);
   }
 
@@ -289,5 +284,17 @@ public class AppSessionManagerJsonRpcHandler extends DefaultJsonRpcHandler<JsonO
     }
 
     return request.getParams().get(appSessionIdParamName).getAsString();
+  }
+
+  public Class<? extends Participant<?, ?>> getParticipantClass() {
+    return participantClass;
+  }
+
+  public AppSessionManager<?, ?, ?> getAppSessionManager() {
+    return appSessionManager;
+  }
+
+  protected Class<? extends RemoteParticipant> getRemoteParticipantClass() {
+    return remoteParticipantClass;
   }
 }
