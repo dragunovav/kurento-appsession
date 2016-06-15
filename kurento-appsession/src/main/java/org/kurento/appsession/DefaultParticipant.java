@@ -1,7 +1,5 @@
 package org.kurento.appsession;
 
-import java.util.UUID;
-
 import org.kurento.appsession.rmi.RemoteParticipant;
 import org.kurento.jsonrpc.Session;
 import org.slf4j.Logger;
@@ -18,7 +16,7 @@ public class DefaultParticipant<A extends AppSession<?>, R extends RemotePartici
   private R remote;
 
   public DefaultParticipant() {
-    this.id = UUID.randomUUID().toString();
+
   }
 
   @Override
@@ -48,6 +46,7 @@ public class DefaultParticipant<A extends AppSession<?>, R extends RemotePartici
   @Override
   public void setSession(Session session) {
     this.session = session;
+    this.id = session.getSessionId();
   }
 
   public void setRemote(R remote) {
