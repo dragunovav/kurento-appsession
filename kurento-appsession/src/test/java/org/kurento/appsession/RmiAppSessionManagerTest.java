@@ -71,7 +71,7 @@ public class RmiAppSessionManagerTest {
 
     @JsonRpcMethod
     public void reverse(TestRemoteParticipant remote) {
-      log.info("Reverse request received");
+      log.debug("Reverse request received");
       remote.req();
     }
   }

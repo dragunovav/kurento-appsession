@@ -71,20 +71,20 @@ public class AppSessionManagerJsonRpcHandler extends DefaultJsonRpcHandler<JsonO
 
       SessionMDC.setLogProperties(clientManager);
 
-      log.info("Req -> " + request);
+      log.debug("Req -> " + request);
 
       String methodName = request.getMethod();
 
       Method m = appSessionManagerMethods.get(methodName);
       if (m != null) {
 
-        log.info("Executing non-session method '" + methodName + "'");
+        log.debug("Executing non-session method '" + methodName + "'");
 
         methodManager.executeMethod(clientManager, appSessionManager, m, transaction, request);
 
       } else {
 
-        log.info("Executing session method '" + methodName + "'");
+        log.debug("Executing session method '" + methodName + "'");
 
         m = appSessionMethods.get(methodName);
 

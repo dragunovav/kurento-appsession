@@ -53,7 +53,7 @@ public class RoomParticipant extends DefaultParticipant<Room, RoomRemoteParticip
   @JsonRpcMethod
   public String negotiateMediaFor(String participantId, String sdpOffer) throws IOException {
 
-    log.info("PARTICIPANT {}: connecting with {} in room {}", getId(), participantId,
+    log.debug("PARTICIPANT {}: connecting with {} in room {}", getId(), participantId,
         getAppSession().getId());
 
     WebRtcEndpoint mediaEP;

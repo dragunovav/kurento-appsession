@@ -52,7 +52,7 @@ public class DynamicRemoteParticipantCreator {
               try {
                 session.sendNotification(methodName, params);
               } catch (Exception e) {
-                log.info(
+                log.debug(
                     "Exception '{}' while sending notification to remote participant: methodName={}, params={}. Possibly the participant is gone. Closing session",
                     e.getClass().getName() + ":" + e.getMessage(), methodName, params);
                 try {

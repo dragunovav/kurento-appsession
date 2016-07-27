@@ -89,7 +89,7 @@ public abstract class AppSessionManager<S extends AppSession<P>, P extends Parti
 
       try {
 
-        log.info(
+        log.debug(
             "Removing participant {} from session {} because jsonRpcSession {} with transportId {} is closed",
             participant.getId(), appSession.getId(), session.getSessionId(),
             getTransportId(session));
@@ -105,14 +105,14 @@ public abstract class AppSessionManager<S extends AppSession<P>, P extends Parti
       } finally {
         if (appSession.getNumParticipants() == 0) {
 
-          log.info("Removing appSession {} because all participants are gone", appSession.getId());
+          log.debug("Removing appSession {} because all participants are gone", appSession.getId());
 
           appSessions.remove(appSession.getId());
         }
       }
 
     } else {
-      log.info(
+      log.debug(
           "Closing websocket connection with transportId={} without AppSession associated to it",
           getTransportId(session));
     }

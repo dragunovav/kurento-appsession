@@ -44,7 +44,7 @@ public class Room extends DefaultAppSession<RoomParticipant, RoomRemoteParticipa
 
     this.pipeline = kurento.createMediaPipeline();
 
-    log.info("ROOM {} has been created", getId());
+    log.debug("ROOM {} has been created", getId());
   }
 
   @PreDestroy
@@ -56,7 +56,7 @@ public class Room extends DefaultAppSession<RoomParticipant, RoomRemoteParticipa
   public List<String> joinRoom(@AppSessionId String roomId, String participantId,
       RoomParticipant newParticipant) {
 
-    log.info("ROOM {}: adding participant {}", roomId, participantId);
+    log.debug("ROOM {}: adding participant {}", roomId, participantId);
 
     newParticipant.setPipeline(pipeline);
     newParticipant.setId(participantId);

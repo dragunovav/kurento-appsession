@@ -114,7 +114,7 @@ public class JsonRpcAndJavaMethodManager {
       }
       sb.append("]");
 
-      log.info("Executing method {} with params {}", m.getName(), params);
+      log.debug("Executing method {} with params {}", m.getName(), params);
     }
     return values;
   }
